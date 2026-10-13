@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.4
+
+- Implement basic translation system for CN/English
+
 ## 1.5.3
 
 - Load all viewer and diagram CSS through the Obsidian-managed stylesheet, without injecting style elements.
