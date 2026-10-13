@@ -1,5 +1,6 @@
 import type { App } from 'obsidian';
 import type { DiagramMetadata } from './types';
+import { t } from "../i18n";
 
 export function diagramMetadata(app: App, svg: SVGSVGElement): DiagramMetadata {
   const leaf = app.workspace
@@ -23,9 +24,9 @@ export function diagramMetadata(app: App, svg: SVGSVGElement): DiagramMetadata {
     file,
     title,
     kind: svg.querySelector('text.actor')
-      ? '时序图'
+      ? t('metadata.kind.sequence')
       : svg.querySelector('g.node')
-        ? '流程图'
-        : '图表',
+        ? t('metadata.kind.flowchart')
+        : t('metadata.kind.generic'),
   };
 }

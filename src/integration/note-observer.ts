@@ -2,6 +2,7 @@ import { setIcon } from 'obsidian';
 import type { DiagramMetadata } from '../diagram/types';
 import type { ViewerSettings } from '../settings';
 import { clean, decorate } from '../theme/decorate';
+import { t } from "../i18n";
 
 /** Owns only injected note controls/styles. No modal or camera logic lives here. */
 export class NoteObserver {
@@ -103,12 +104,12 @@ export class NoteObserver {
           cls: 'mpv-mermaid-open',
           attr: {
             type: 'button',
-            title: '全屏查看此图，支持缩放和拖动',
-            'aria-label': '全屏查看 Mermaid 图表',
+            title: t('command.openCurrentDiagram'),
+            'aria-label': t('command.openCurrentDiagram'),
           },
         });
         setIcon(button, 'maximize-2');
-        button.createSpan({ text: '全屏查看' });
+        button.createSpan({ text: t('command.openCurrentDiagram') });
       }
       const caption = bar.querySelector<HTMLElement>('.mpv-mermaid-caption');
       const text = `${meta.kind} · ${meta.title}`;
