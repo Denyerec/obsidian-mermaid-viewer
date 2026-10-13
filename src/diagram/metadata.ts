@@ -1,6 +1,6 @@
 import type { App } from 'obsidian';
 import type { DiagramMetadata } from './types';
-import { t } from "../i18n";
+import { t } from '../i18n';
 
 export function diagramMetadata(app: App, svg: SVGSVGElement): DiagramMetadata {
   const leaf = app.workspace

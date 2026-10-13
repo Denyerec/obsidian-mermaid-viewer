@@ -9,7 +9,7 @@ import {
 } from './settings';
 import { decorate } from './theme/decorate';
 import { DiagramModal } from './viewer/modal';
-import { t } from "./i18n";
+import { t } from './i18n';
 
 /** Composition root: settings, note integration and modal lifetime only. */
 export default class MermaidViewer extends Plugin {

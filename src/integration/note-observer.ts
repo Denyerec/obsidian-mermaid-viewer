@@ -2,7 +2,7 @@ import { setIcon } from 'obsidian';
 import type { DiagramMetadata } from '../diagram/types';
 import type { ViewerSettings } from '../settings';
 import { clean, decorate } from '../theme/decorate';
-import { t } from "../i18n";
+import { t } from '../i18n';
 
 /** Owns only injected note controls/styles. No modal or camera logic lives here. */
 export class NoteObserver {

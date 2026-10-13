@@ -1,10 +1,10 @@
-import { getLanguage } from "obsidian";
-import en from "./locales/en-GB.json";
-import zhCN from "./locales/zh-CN.json";
+import { getLanguage } from 'obsidian';
+import en from './locales/en-GB.json';
+import zhCN from './locales/zh-CN.json';
 
 const dictionaries = {
-  "en-GB": en,
-  "zh-CN": zhCN,
+  'en-GB': en,
+  'zh-CN': zhCN,
 };
 
 export type Locale = keyof typeof dictionaries;
@@ -17,9 +17,7 @@ function getLocale(): Locale {
 
   const language = getLanguage();
 
-  return language.toLowerCase().startsWith("zh")
-    ? "zh-CN"
-    : "en-GB";
+  return language.toLowerCase().startsWith('zh') ? 'zh-CN' : 'en-GB';
 }
 
 export function setLocale(locale: Locale): void {
@@ -27,8 +25,7 @@ export function setLocale(locale: Locale): void {
 }
 
 export function t(key: TranslationKey): string {
-  const dictionary = dictionaries[getLocale()] as
-    Partial<Record<TranslationKey, string>>;
+  const dictionary = dictionaries[getLocale()] as Partial<Record<TranslationKey, string>>;
 
   return dictionary[key] ?? en[key] ?? key;
 }

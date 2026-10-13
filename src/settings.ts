@@ -7,7 +7,7 @@ import {
   type SettingDefinition,
 } from 'obsidian';
 import { validNoteClass, type ViewerSettings } from './settings-model';
-import { t } from "./i18n";
+import { t } from './i18n';
 export { DEFAULT_SETTINGS, normalizeSettings, type ViewerSettings } from './settings-model';
 
 interface SettingsHost extends Plugin {

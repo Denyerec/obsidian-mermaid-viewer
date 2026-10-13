@@ -1,7 +1,7 @@
 import { setIcon } from 'obsidian';
 import { ROLES } from '../theme/roles';
 import type { DiagramMetadata } from '../diagram/types';
-import { t } from "../i18n";
+import { t } from '../i18n';
 
 export function iconButton(
   parent: HTMLElement,
@@ -118,15 +118,31 @@ export function createViewerUI(
   };
   const fitButton = button(t('viewer.fitAll'), () => actions.fit(), t('viewer.fitAll'));
   const widthButton = button(t('viewer.fitWidth'), () => actions.fitWidth(), t('viewer.fitWidth'));
-  const actualButton = button(t('viewer.actualSize'), () => actions.actualSize(), t('viewer.actualSize'));
+  const actualButton = button(
+    t('viewer.actualSize'),
+    () => actions.actualSize(),
+    t('viewer.actualSize'),
+  );
   const zoom = toolbar.createDiv({ cls: 'mpv-diagram-zoom' });
-  const zoomOut = iconButton(zoom, 'minus', t('viewer.zoomOut'), () => actions.zoomCenter(1 / 1.25), signal);
+  const zoomOut = iconButton(
+    zoom,
+    'minus',
+    t('viewer.zoomOut'),
+    () => actions.zoomCenter(1 / 1.25),
+    signal,
+  );
   const counter = zoom.createSpan({
     cls: 'mpv-diagram-scale',
     text: '100%',
     attr: { 'aria-label': t('viewer.zoomLevel') },
   });
-  const zoomIn = iconButton(zoom, 'plus', t('viewer.zoomIn'), () => actions.zoomCenter(1.25), signal);
+  const zoomIn = iconButton(
+    zoom,
+    'plus',
+    t('viewer.zoomIn'),
+    () => actions.zoomCenter(1.25),
+    signal,
+  );
   toolbar.createSpan({ cls: 'mpv-diagram-hint', text: t('viewer.zoomHint') });
 
   return {
