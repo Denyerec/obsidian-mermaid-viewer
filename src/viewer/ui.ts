@@ -74,15 +74,15 @@ export function createViewerUI(
   });
   help.createEl('strong', { text: t('viewer.help.heading') });
   for (const [keys, label] of [
-    ['滚轮 / 拖动', t('viewer.pan')],
-    ['Ctrl / ⌘ + 滚轮', t('viewer.zoom.pointer')],
-    ['双指捏合', t('viewer.zoom.pinch') ],
-    ['＋ / −', t('viewer.zoom.inOut') ],
-    ['F / 0', t('viewer.fitAll') ],
-    ['W', t('viewer.fitWidth') ],
-    ['1', t('viewer.actualSize') ],
-    ['方向键', t('viewer.pan.keys') ],
-    ['Esc', t('viewer.close') ],
+    [t('viewer.shortcut.pan'), t('viewer.pan')],
+    [t('viewer.shortcut.zoomPointer'), t('viewer.zoom.pointer')],
+    [t('viewer.shortcut.zoomPinch'), t('viewer.zoom.pinch')],
+    [t('viewer.shortcut.zoomInOut'), t('viewer.zoom.inOut')],
+    [t('viewer.shortcut.fitAll'), t('viewer.fitAll')],
+    [t('viewer.shortcut.fitWidth'), t('viewer.fitWidth')],
+    [t('viewer.shortcut.actualSize'), t('viewer.actualSize')],
+    [t('viewer.shortcut.panKeys'), t('viewer.pan.keys')],
+    [t('viewer.shortcut.close'), t('viewer.close')],
   ]) {
     const row = help.createDiv({ cls: 'mpv-help-row' });
     row.createSpan({ text: keys });
