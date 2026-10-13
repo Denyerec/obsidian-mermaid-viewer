@@ -7,6 +7,7 @@ import {
   type SettingDefinition,
 } from 'obsidian';
 import { validNoteClass, type ViewerSettings } from './settings-model';
+import { t } from "./i18n";
 export { DEFAULT_SETTINGS, normalizeSettings, type ViewerSettings } from './settings-model';
 
 interface SettingsHost extends Plugin {
@@ -23,15 +24,15 @@ export class ViewerSettingsTab extends PluginSettingTab {
   getSettingDefinitions(): SettingDefinition[] {
     return [
       {
-        name: '图表应用范围',
-        desc: '填写一个笔记 cssclasses 名称；留空时应用到所有笔记的 Mermaid 图表。',
+        name: t('settings.scope.name'),
+        desc: t('settings.scope.description'),
         aliases: ['Mermaid', 'scope', 'cssclasses'],
         render: (setting) => this.addScopeControl(setting),
       },
       {
-        name: '节点配色规则',
-        desc: '自动识别 focus、step、store、branch、ext、err 节点类；未分类节点使用中性色。',
-        aliases: ['Mermaid', 'colors', 'palette'],
+        name: t('settings.colours.name'),
+        desc: t('settings.colours.description'),
+        aliases: ['Mermaid', 'colours', 'palette'],
       },
     ];
   }
@@ -49,12 +50,12 @@ export class ViewerSettingsTab extends PluginSettingTab {
 
   private addScopeControl(setting: Setting): void {
     setting.addText((text) => {
-      text.setPlaceholder('留空表示所有笔记').setValue(this.host.settings.noteClass);
+      text.setPlaceholder(t('settings.scope.placeholder')).setValue(this.host.settings.noteClass);
       // Commit on blur so typing never rebuilds every diagram in the vault.
       text.inputEl.addEventListener('change', () => {
         const noteClass = text.getValue().trim();
         if (!validNoteClass(noteClass)) {
-          new Notice('请填写单个 CSS 类名，不要添加点号或空格。');
+          new Notice(t('settings.scope.invalid'));
           text.setValue(this.host.settings.noteClass);
           return;
         }

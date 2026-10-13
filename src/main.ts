@@ -9,6 +9,7 @@ import {
 } from './settings';
 import { decorate } from './theme/decorate';
 import { DiagramModal } from './viewer/modal';
+import { t } from "./i18n";
 
 /** Composition root: settings, note integration and modal lifetime only. */
 export default class MermaidViewer extends Plugin {
@@ -32,7 +33,7 @@ export default class MermaidViewer extends Plugin {
     });
     this.addCommand({
       id: 'open-current-diagram',
-      name: '全屏查看当前笔记的 Mermaid 图',
+      name: t('command.openCurrentDiagram'),
       callback: () => {
         const scope = this.app.workspace.getActiveViewOfType(MarkdownView)?.containerEl;
         const diagrams = Array.from(
@@ -44,7 +45,7 @@ export default class MermaidViewer extends Plugin {
             return rect.bottom > 0 && rect.top < (el.ownerDocument.defaultView?.innerHeight ?? 0);
           }) ?? diagrams[0];
         if (svg) this.open(svg);
-        else new Notice('当前笔记没有可查看的 Mermaid 图表，请检查插件设置中的应用范围。');
+        else new Notice(t('notice.noDiagram'));
       },
     });
   }
@@ -73,7 +74,7 @@ export default class MermaidViewer extends Plugin {
     try {
       await this.saveData(next);
     } catch {
-      new Notice('设置保存失败，请检查 Vault 的写入权限。');
+      new Notice(t('notice.saveFailed'));
       return;
     }
     this.settings = next;

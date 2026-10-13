@@ -9,6 +9,7 @@ const dir = path.resolve(__dirname, '..');
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
   try {
     const page = await browser.newPage();
+    await page.emulateLocale('en-GB');
     await page.setViewport({ width: 1280, height: 800 });
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
